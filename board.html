@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><title>Puzzlegame</title><script src="code.js"></script>
+</head><body><p>
+<table border=1><tr>
+	<td onClick="squareclick(0)"><img src="piece1.png" id="0,0"></td>
+	<td onClick="squareclick(1)"><img src="piece2.png" id="0,1"></td>
+	<td onClick="squareclick(2)"><img src="piece3.png" id="0,2"></td>
+</tr><tr>
+	<td onClick="squareclick(3)"><img src="piece4.png" id="1,0"></td>
+	<td onClick="squareclick(4)"><img src="piece5.png" id="1,1"></td>
+	<td onClick="squareclick(5)"><img src="piece6.png" id="1,2"></td>
+</tr><tr>
+	<td onClick="squareclick(6)"><img src="piece7.png" id="2,0"></td>
+	<td onClick="squareclick(7)"><img src="piece8.png" id="2,1"></td>
+	<td onClick="squareclick(8)"><img src="piece9.png" id="2,2"></td>
+</tr></table>
+<p><form onSubmit="return false;">
+<button onClick=stir()>Mix the pieces</button><button onClick="console.log(window);"()>Print the state to the console.</button><br>
+Logtexts:<br>
+<textarea rows=40 cols=40 id="log"></textarea><br>
+</form>
+<!-- 
+Note: this example does NOT represent a pretty, tight, maintainable or any other variant
+of ENTERPRISE grade coding. Things have been done inneficiently to make stuff clearer.
+(For some extra practice, create the table above with JavaScript... it's a waste of time
+to type something "mechanic" like that table out manually these days, you know :-).) 
+-->
+</body></html>
