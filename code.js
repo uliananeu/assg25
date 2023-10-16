@@ -43,7 +43,6 @@ function draw()
 
 function stironce()
 {
-	//Read this with care, once you understand the logic you've practically solved the assignment!
 	
 	let i,j;
 	let foundit = false;
@@ -83,10 +82,48 @@ function stir()
 	draw();
 }
 
-//This is where your work starts, examine the code above, but you'll be able to make the whole game work by only implementing the function below.
 
+function squareclick(n) {
+	// Log the square number that was clicked
+	l("Square number " + n + " was clicked.");
 
-function squareclick(n)
-{
-	l("Square number " + n + " was clicked... you now need to store this information into a variable.\n IF [the next click is not an empty square] store that information into the variable instead of " + n + ".\n IF [the next click targets AN EMPTY square next to this one (above, below, left, right)], you need to change the image in " + n + " and the next click. \nAFTER THE MOVE you check whether all the pictures in the array are now in raising order.\n IF [pictures are ordered], place the last, missing piece into the last square.\n Now you know what to code and where: start coding!\n\nNote that this log currently logs the latest message to the top. If you want to scroll down to the latest message, reverse the direction in the l function :-).");
+	// Check if a square was previously clicked
+	if (lastClickedSquare !== null) {
+		 // Check if the previously clicked square is an empty square
+		if (pieces[Math.floor(lastClickedSquare / 3)][lastClickedSquare % 3 ] === 0) {
+			// Swap the pieces between the previously clicked square and the currently clicked square
+			pieces[Math.floor(lastClickedSquare / 3)][lastClickedSquare % 3] = pieces[Math.floor(n / 3)][n % 3];
+			pieces[Math.floor(n / 3)][n % 3] = 0;
+
+			lastClickedSquare = n; // Update the lastClickedSquare to the current square
+			draw(); // Redraw the game board
+			checkWin(); // Check if the player has won
+			return;
+		}
+	}
+
+	// Update lastClickedSquare to the current square
+	lastClickedSquare = n;
+}
+
+function checkWin() {
+	let currentNumber = 1;
+
+	// Iterate through the pieces and check if they are in the correct order
+	for (let i = 0; i < pieces.length; i++) {
+		for (let j = 0; j < pieces[i].length; j++) {
+		if (pieces[i][j] !== currentNumber) {
+		return;
+		}
+		currentNumber++;
+		}
+	}
+
+		// If all pieces are in order, the player wins
+		l("You win! All pieces are in order.");
+
+		// Set the last piece to be empty
+		pieces[2][2] = currentNumber - 1;
+		  // Redraw the game board
+		draw();
 }
